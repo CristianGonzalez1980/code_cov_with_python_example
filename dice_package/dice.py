@@ -1,19 +1,32 @@
-from random import randint
+def is_prime(n):
+    #if n < 0:
+    #    return 'no existen números primos negativos'
 
-class Die:
-    def __init__(self, sides=6):
-        self.sides = sides
-    
-    def roll(self):
-        return randint(1, self.sides)
+    if n<= 1:
+        return 'Los números primos son naturales mayores a 1'
+
+    if n == 2:
+        return True
+
+    if n % 2 == 0:
+        return False
+
+    prime = True
+    for i in range(3,n-1):
+        if n % i == 0:
+            prime = False
+    return prime
+
+def cubic(a):
+    return a*a*a
+
+def potencia(a,e):
+    potencia_de_a = 1
+    for i in range (1,e+1):
+        potencia_de_a = potencia_de_a * a
+    return potencia_de_a
+
+def say_hello(name):
+    return "Hello, " + name
 
 
-class DiceBag:
-    def __init__(self, sides=[]):
-        self.dice = self.create_dice_from_sides(sides)
-    
-    def create_dice_from_sides(self, sides):
-        return list(map(lambda side: Die(side), sides))
-    
-    def roll_bag(self):
-        return list(map(lambda dice: dice.roll(), self.dice))
